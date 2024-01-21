@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] GameObject bulletPrefab;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-        PlayerFire();
+      
     }
 
     void PlayerMovement()
@@ -39,14 +39,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PlayerFire()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            GameObject bulletObj = Instantiate(bulletPrefab) as GameObject;
-            bulletObj.transform.position = this.transform.position;
-
-            Destroy(bulletObj, 4);
-        }
-    }
+    
 }
