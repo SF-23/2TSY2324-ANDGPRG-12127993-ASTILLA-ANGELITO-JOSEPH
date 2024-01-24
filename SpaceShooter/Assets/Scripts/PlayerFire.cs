@@ -22,7 +22,7 @@ public class PlayerFire : MonoBehaviour
 
     void PlayerShoot()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             switch(firingMode)
             {

@@ -485,15 +485,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 570632013832535785, guid: c484e9ee88e6f4942ad5c8a0461c6493, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.57
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 570632013832535785, guid: c484e9ee88e6f4942ad5c8a0461c6493, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.42
+      value: 12.28
       objectReference: {fileID: 0}
     - target: {fileID: 570632013832535785, guid: c484e9ee88e6f4942ad5c8a0461c6493, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.15
+      value: -1.097
       objectReference: {fileID: 0}
     - target: {fileID: 570632013832535785, guid: c484e9ee88e6f4942ad5c8a0461c6493, type: 3}
       propertyPath: m_LocalRotation.w
@@ -613,6 +613,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1117032595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 909896894237664339, guid: c484e9ee88e6f4942ad5c8a0461c6493, type: 3}
+  m_PrefabInstance: {fileID: 810276818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1117032596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117032595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b512d08a5536ba6498eb47596a295172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpeed: 50
+  currentDirectionTimer: 0
+  defaultDirectionTimer: 200
 --- !u!1 &1143069706
 GameObject:
   m_ObjectHideFlags: 0
