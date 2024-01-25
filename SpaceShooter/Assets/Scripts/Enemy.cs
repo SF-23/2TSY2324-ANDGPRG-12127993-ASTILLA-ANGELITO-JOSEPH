@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] float enemySpeed = 5f;
-    [SerializeField] int currentDirectionTimer = 0;
-    [SerializeField] int defaultDirectionTimer = 3000;
+    [SerializeField] float currEnemyHp = 20;
+    [SerializeField] float maxEnemyHp = 20;
+    //[SerializeField] int currentDirectionTimer = 0;
+    //[SerializeField] int defaultDirectionTimer = 3000;
     //[SerializeField] float distance = 5f;
 
     //private Vector3 initialPosition;
@@ -14,17 +18,48 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-  
+        UpdateHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
         //initialPosition = this.transform.position;
-        //this.transform.Translate(Vector3.forward * enemySpeed * Time.deltaTime);
-        SideMovement();
+        this.transform.Translate(Vector3.forward * enemySpeed * Time.deltaTime);
+        //SideMovement();
     }
 
+    void UpdateHealth()
+    {
+        healthText.text = currEnemyHp + "/" + maxEnemyHp;
+    }
+
+    void TakeDamage()
+    {
+        currEnemyHp -= 10;
+        UpdateHealth();
+        if(currEnemyHp <= 0)
+        {
+            EnemyDeath();
+        }
+
+    }
+
+    void EnemyDeath()
+    {
+        Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name.Contains("Bullet"))
+        {
+            Destroy(other.gameObject);
+            TakeDamage();
+        }
+    }
+
+    /*
     void SideMovement()
     {
         if (currentDirectionTimer > 0)
@@ -68,6 +103,7 @@ public class Enemy : MonoBehaviour
             isMoveRight = !isMoveRight;
             Debug.Log(Vector3.Distance(initialPosition, transform.position));
         }
-        */
+        
     }
+    */
 }
