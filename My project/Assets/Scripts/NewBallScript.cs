@@ -9,18 +9,17 @@ public class NewBallScript : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] float ballSpd;
 
-    [SerializeField] private float xPos;
-    [SerializeField] private float yPos;
-
     [SerializeField] private float minNum;
     [SerializeField] private float maxNum;
+
+    [SerializeField] private float xPos;
+    [SerializeField] private float yPos;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        xPos = UnityEngine.Random.RandomRange(minNum, maxNum);
-        yPos = UnityEngine.Random.RandomRange(minNum, maxNum);
+        
     }
 
     // Update is called once per frame
@@ -60,7 +59,7 @@ public class NewBallScript : MonoBehaviour
         }
         if(collision.gameObject.name.Contains("Player"))
         {
-            xPos = 1;
+            xPos = UnityEngine.Random.RandomRange(minNum, maxNum);
             yPos = 1;
         }
         

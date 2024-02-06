@@ -920,11 +920,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1539970465}
-  ballSpd: 700
-  xPos: 1
-  yPos: 1
+  ballSpd: 800
   minNum: -1
   maxNum: 1
+  xPos: 0
+  yPos: 0
 --- !u!1 &1636537594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1046,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2832877383931525364, guid: c6f64f555e124dc44a42447a021be791, type: 3}
+      propertyPath: currHP
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832877383931525368, guid: c6f64f555e124dc44a42447a021be791, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2832877383931525371, guid: c6f64f555e124dc44a42447a021be791, type: 3}
       propertyPath: m_RootOrder
       value: 7

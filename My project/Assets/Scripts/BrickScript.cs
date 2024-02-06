@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BrickScript : MonoBehaviour
 {
-    [SerializeField] float currHP = 3;
-    [SerializeField] float maxHP = 3;
+    [SerializeField] float currHP;
+    [SerializeField] float maxHP;
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +21,44 @@ public class BrickScript : MonoBehaviour
 
     void BrickDeath()
     {
-        Destroy(this.gameObject);
+        if(currHP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void TakeDmg()
     {
-        if(other.gameObject.name.Contains("Ball"))
+        if (currHP > maxHP)
+        {
+            currHP -= 1;
+        }
+}
+
+    void ColorChange()
+    {
+        if(currHP == 1)
+        {
+            GetComponent<MeshRenderer>().material.color = Color.red;
+        }
+        else if (currHP == 2) 
+        {
+            GetComponent<MeshRenderer>().material.color = Color.yellow;
+        }
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Contains("Ball"))
         {
             BrickDeath();
         }
     }
 
+
+
+
+   
 
 }
