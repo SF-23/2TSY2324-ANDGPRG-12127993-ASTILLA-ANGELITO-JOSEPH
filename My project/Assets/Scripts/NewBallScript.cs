@@ -15,24 +15,11 @@ public class NewBallScript : MonoBehaviour
     [SerializeField] private float xPos;
     [SerializeField] private float yPos;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        //BallMovement();
-    }
-
     void BallMovement()
     {
         Vector3 direction = new Vector3(xPos, yPos, 0);
 
-        //rb.AddForce(direction * ballSpd * Time.deltaTime);
+        rb.AddForce(direction * ballSpd * Time.deltaTime);
 
         rb.velocity = direction * ballSpd * Time.deltaTime;
     }
@@ -65,6 +52,8 @@ public class NewBallScript : MonoBehaviour
         
 
         BallMovement();
+
+        rb.useGravity = false;
     }
     
 }

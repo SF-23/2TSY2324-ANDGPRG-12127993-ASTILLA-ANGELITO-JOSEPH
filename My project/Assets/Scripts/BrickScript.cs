@@ -7,33 +7,26 @@ public class BrickScript : MonoBehaviour
     [SerializeField] float currHP;
     [SerializeField] float maxHP;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ColorChange();
     }
 
     void BrickDeath()
     {
-        if(currHP <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+       Destroy(this.gameObject);
     }
 
     void TakeDmg()
     {
-        if (currHP > maxHP)
+        currHP -= 1;
+
+        if(currHP <= 0)
         {
-            currHP -= 1;
+            BrickDeath();
         }
-}
+        
+    }
 
     void ColorChange()
     {
@@ -52,7 +45,8 @@ public class BrickScript : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Ball"))
         {
-            BrickDeath();
+            TakeDmg();
+            ColorChange();
         }
     }
 
