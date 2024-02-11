@@ -27,7 +27,6 @@ public class BrickScript : MonoBehaviour
         }
         
     }
-
     void ColorChange()
     {
         if(currHP == 1)

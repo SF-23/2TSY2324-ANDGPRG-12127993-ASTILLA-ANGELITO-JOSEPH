@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class NewBallScript : MonoBehaviour
 {
@@ -15,22 +16,32 @@ public class NewBallScript : MonoBehaviour
     [SerializeField] private float xPos;
     [SerializeField] private float yPos;
 
+    void DeleteBall()
+    {
+        Destroy(gameObject);
+    }
+
     void BallMovement()
     {
         Vector3 direction = new Vector3(xPos, yPos, 0);
 
-        rb.AddForce(direction * ballSpd * Time.deltaTime);
+       rb.AddForce(direction * ballSpd * Time.deltaTime);
 
-        rb.velocity = direction * ballSpd * Time.deltaTime;
+       rb.velocity = direction * ballSpd * Time.deltaTime;
     }
 
-    [Obsolete]
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.name.Contains("Player"))
+        {
+            xPos = Random.Range(minNum, maxNum);
+            yPos = 1;
+            rb.useGravity = false;
+        }
         if (collision.gameObject.name.Contains("Bricks"))
         {
-            xPos = UnityEngine.Random.RandomRange(minNum, maxNum);
-            yPos = UnityEngine.Random.RandomRange(minNum, maxNum);
+            xPos = Random.Range(minNum, maxNum);
+            yPos = -1;
         }
         if (collision.gameObject.name.Contains("RightWall"))
         {
@@ -44,16 +55,15 @@ public class NewBallScript : MonoBehaviour
         {
             yPos = -yPos;
         }
-        if(collision.gameObject.name.Contains("Player"))
-        {
-            xPos = UnityEngine.Random.RandomRange(minNum, maxNum);
-            yPos = 1;
-        }
-        
-
         BallMovement();
-
-        rb.useGravity = false;
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name.Contains("BottomWall"))
+        {
+            DeleteBall();
+        }
+    }
+
 }
