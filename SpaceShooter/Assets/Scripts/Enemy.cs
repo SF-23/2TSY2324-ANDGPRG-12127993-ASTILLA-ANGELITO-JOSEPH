@@ -9,12 +9,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemySpeed = 5f;
     [SerializeField] float currEnemyHp = 20;
     [SerializeField] float maxEnemyHp = 20;
-    //[SerializeField] int currentDirectionTimer = 0;
-    //[SerializeField] int defaultDirectionTimer = 3000;
-    //[SerializeField] float distance = 5f;
-
-    //private Vector3 initialPosition;
-    private bool isMoveRight;
 
     void Start()
     {
@@ -24,9 +18,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //initialPosition = this.transform.position;
         this.transform.Translate(Vector3.forward * enemySpeed * Time.deltaTime);
-        //SideMovement();
     }
 
     void UpdateHealth()
@@ -36,13 +28,12 @@ public class Enemy : MonoBehaviour
 
     void TakeDamage()
     {
-        currEnemyHp -= 10;
+        currEnemyHp -= 5;
         UpdateHealth();
         if(currEnemyHp <= 0)
         {
             EnemyDeath();
         }
-
     }
 
     void EnemyDeath()
@@ -57,53 +48,12 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             TakeDamage();
         }
+
+        if(other.gameObject.name.Contains("EnemyDeleteWall"))
+        {
+            EnemyDeath();
+        }
     }
 
-    /*
-    void SideMovement()
-    {
-        if (currentDirectionTimer > 0)
-        {
-            currentDirectionTimer--;
-        }
 
-        if (currentDirectionTimer == 0)
-        {
-            isMoveRight = true;
-            currentDirectionTimer = defaultDirectionTimer;
-        }
-
-        if(isMoveRight)
-        {
-           this.transform.Translate(Vector3.right * enemySpeed * Time.deltaTime);
-        }
-        else
-        {
-            this.transform.Translate(-Vector3.right * enemySpeed * Time.deltaTime);
-        }
-
-        isMoveRight=false;
-       
-
-
-
-        /*
-        if(isMoveRight) 
-        {
-            this.transform.Translate(Vector3.right * enemySpeed * Time.deltaTime);    
-        }
-        else
-        {
-            this.transform.Translate(Vector3.left * enemySpeed * Time.deltaTime);
-        }
-
-        if (Vector3.Distance(initialPosition, transform.position) >= distance)
-        {
-            // Change direction
-            isMoveRight = !isMoveRight;
-            Debug.Log(Vector3.Distance(initialPosition, transform.position));
-        }
-        
-    }
-    */
 }

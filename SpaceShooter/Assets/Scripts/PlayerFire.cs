@@ -7,14 +7,10 @@ public class PlayerFire : MonoBehaviour
 {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject cubeBulletPrefab;
-    [SerializeField] Transform spawnPoint;
-    [SerializeField] Transform spawnPointTwo;
-    [SerializeField] Transform spawnPointThree;
-    [SerializeField] Transform spawnPointFour;
-    [SerializeField] Transform spawnPointFive;
+    [SerializeField] Transform[] spawnPoints;
     [SerializeField] TextMeshProUGUI currentFiremode;
 
-    int firingMode;
+    private int firingMode;
 
     void Start()
     {
@@ -33,40 +29,39 @@ public class PlayerFire : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            switch(firingMode)
-            {
-                case 1:                             
-                    SpawnBullet(spawnPoint);                    //Nose of ship
-                    break;
-                case 2:
-                    SpawnBullet(spawnPointTwo);                //Left Wing
-                    SpawnBullet(spawnPointThree);              //Right Wing
-                    break;
-                case 3:
-                    SpawnBullet(spawnPoint);                   
-                    SpawnBullet(spawnPointTwo);
-                    SpawnBullet(spawnPointThree);
-                    break;
-                case 4:
-                    SpawnBullet(spawnPoint);
-                    SpawnBullet(spawnPointFour);               //Angled Left Wing
-                    SpawnBullet(spawnPointFive);               //Angled Right Wing
-                    break;
-                default:
-                    Debug.LogError("Error Firing not Firing");
-                    break;
-            }
-            
-            //SwitchFirePattern();
-            //if (firingMode == 0 )
-            //GameObject bulletObj = Instantiate(bulletPrefab) as GameObject;
-            //SpawnBullet(spawnPoint)
-            //Destroy(bulletObj, 4);
+            FiringMove();
         }
 
         if(Input.GetKeyUp(KeyCode.G))
         {
-            SpawnCubeBullet(spawnPoint);
+            SpawnCubeBullet(spawnPoints[0]);
+        }
+    }
+
+    void FiringMove()
+    {
+        switch (firingMode)
+        {
+            case 1:
+                SpawnBullet(spawnPoints[0]);                    //Nose of ship
+                break;
+            case 2:
+                SpawnBullet(spawnPoints[1]);                //Left Wing
+                SpawnBullet(spawnPoints[2]);              //Right Wing
+                break;
+            case 3:
+                SpawnBullet(spawnPoints[0]);
+                SpawnBullet(spawnPoints[1]);
+                SpawnBullet(spawnPoints[2]);
+                break;
+            case 4:
+                SpawnBullet(spawnPoints[0]);
+                SpawnBullet(spawnPoints[3]);               //Angled Left Wing
+                SpawnBullet(spawnPoints[4]);               //Angled Right Wing
+                break;
+            default:
+                Debug.LogError("Error Firing not Firing");
+                break;
         }
     }
 
@@ -102,7 +97,7 @@ public class PlayerFire : MonoBehaviour
 
     void SpawnBullet(Transform mspawnPoint)
     {
-        GameObject bulletObj = Instantiate(bulletPrefab, mspawnPoint.transform.position, Quaternion.identity) as GameObject;
+        GameObject bulletObj = Instantiate(bulletPrefab, mspawnPoint.transform.position, mspawnPoint.rotation) as GameObject;
 
         Destroy(bulletObj, 5);
     }
@@ -113,4 +108,6 @@ public class PlayerFire : MonoBehaviour
 
         Destroy (cubeBulletObj, 5);
     }
+
+    
 }

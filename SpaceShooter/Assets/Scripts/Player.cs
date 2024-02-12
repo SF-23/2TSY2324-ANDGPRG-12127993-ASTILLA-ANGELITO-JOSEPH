@@ -5,12 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-   
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -21,6 +15,10 @@ public class Player : MonoBehaviour
 
     void PlayerMovement()
     {
+        Vector3 position = this.transform.position;
+        position.x = Mathf.Clamp(position.x, -4f, 4f);
+        transform.position = position;
+
         if (Input.GetKey(KeyCode.W)) 
         {
             this.transform.Translate(Vector3.forward* moveSpeed * Time.deltaTime);
