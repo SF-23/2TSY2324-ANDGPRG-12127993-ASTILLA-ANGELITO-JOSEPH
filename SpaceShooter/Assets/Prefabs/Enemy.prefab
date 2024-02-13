@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 6694873350955336912}
   - component: {fileID: 1094462686904160710}
   - component: {fileID: 3012531522894064983}
-  - component: {fileID: 8543752067967530005}
+  - component: {fileID: 2535626595116480604}
   - component: {fileID: 4302125727365723027}
   - component: {fileID: 3347175157229096102}
   m_Layer: 0
@@ -323,7 +323,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8543752067967530005
+--- !u!114 &2535626595116480604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 2871033613716799837}
-  enemySpeed: 2
+  enemySpeed: 3
   currEnemyHp: 20
   maxEnemyHp: 20
 --- !u!54 &4302125727365723027

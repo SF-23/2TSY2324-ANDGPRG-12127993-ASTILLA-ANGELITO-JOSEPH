@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI healthText;
-    [SerializeField] float enemySpeed = 5f;
-    [SerializeField] float currEnemyHp = 20;
-    [SerializeField] float maxEnemyHp = 20;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private float enemySpeed = 5f;
+    [SerializeField] private float currEnemyHp = 20;
+    [SerializeField] private float maxEnemyHp = 20;
+
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour
         UpdateHealth();
         if(currEnemyHp <= 0)
         {
+           
             EnemyDeath();
         }
     }
