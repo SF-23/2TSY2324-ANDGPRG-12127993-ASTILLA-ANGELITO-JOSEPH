@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CubeBullet : MonoBehaviour
 {
-    [SerializeField] float cubeBulletSpd = 1f;
+    [SerializeField] float cubeBulletSpd;
     
 
     // Update is called once per frame

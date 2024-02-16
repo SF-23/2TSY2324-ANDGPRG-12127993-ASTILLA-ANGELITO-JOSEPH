@@ -7,9 +7,9 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] Transform spawnPoint;
     [SerializeField] float xPos;
-    [SerializeField] float spawnInterval;
+    [SerializeField] public float spawnInterval;
 
-    private bool isSpawning = true;
+    public bool isSpawning = true;
 
 
     void Start()

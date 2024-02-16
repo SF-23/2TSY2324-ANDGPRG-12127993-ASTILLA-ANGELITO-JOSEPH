@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private float enemySpeed = 5f;
-    [SerializeField] private float currEnemyHp = 20;
-    [SerializeField] private float maxEnemyHp = 20;
+    [SerializeField] float enemySpeed;
+    [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] public float currEnemyHp;
+    [SerializeField] public float maxEnemyHp;
 
+    [SerializeField] GameObject powerUpPrefab;
 
+    [SerializeField] float fixedNo;
+    [SerializeField] float randomNo;
+    
     void Start()
     {
         UpdateHealth();
@@ -33,8 +37,9 @@ public class EnemyScript : MonoBehaviour
         UpdateHealth();
         if(currEnemyHp <= 0)
         {
-           
+            SpawnPowerUp();
             EnemyDeath();
+            GameManger.Instance.enemyCounter++;
         }
     }
 
@@ -49,11 +54,24 @@ public class EnemyScript : MonoBehaviour
         {
             Destroy(other.gameObject);
             TakeDamage();
+            SoundManager.Instance.PlayEnemyDeath();
         }
 
-        if(other.gameObject.name.Contains("EnemyDeleteWall"))
+        if(other.gameObject.name.Contains("DeleteWall"))
         {
             EnemyDeath();
+        }
+    }
+
+    void SpawnPowerUp()
+    {
+        randomNo = Random.Range(0f, 1f);
+
+        //Debug.Log(randomNo);
+
+        if(randomNo < fixedNo)
+        {
+            GameObject powerUp = Instantiate(powerUpPrefab, this.transform.position, Quaternion.identity) as GameObject;
         }
     }
 
