@@ -51,10 +51,15 @@ public class BuildController : MonoBehaviour
 
     void Update()
     {
+        MouseTowerInput();
+    }
+
+    void MouseTowerInput()
+    {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         allObject = Physics.RaycastAll(ray);   // all object
 
-        if(draggableTower != null)
+        if (draggableTower != null)
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -67,8 +72,7 @@ public class BuildController : MonoBehaviour
                     tempTower.Buildable();
                     if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                     {
-                        //tempTower.Build();
-                        StartCoroutine(BuildTower());
+                        BuildTower();
                         tempTower.GetComponent<TowerAimShoot>().enabled = true;
                         draggableTower = null;
                     }
@@ -81,16 +85,36 @@ public class BuildController : MonoBehaviour
         }
     }
 
-    IEnumerator BuildTower()
+    void BuildTower()
+    {
+        if(CanPlayerBuyTower())
+        {
+            StartCoroutine(CoroutineBuildTower());
+        }
+        else
+        {
+            Debug.Log("Not Enough Credits");
+        }
+    }
+
+    IEnumerator CoroutineBuildTower()
     {
         float startTime = Time.time;
 
+        GameManager.instance.SpendGold(tempTower.towerPrice);
+        
         tempTower.Building();
         
         while (Time.time < startTime + tempTower.buildTimer)
         {
+            tempTower.GetComponent<TowerAimShoot>().enabled = false;
             yield return new WaitForSeconds(tempTower.buildTimer);
         }
         tempTower.Build();
+    }
+
+    public bool CanPlayerBuyTower()
+    {
+        return GameManager.instance.playerGold >= tempTower.towerPrice;
     }
 }

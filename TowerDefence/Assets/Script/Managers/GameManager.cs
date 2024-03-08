@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform crystal;
     public Transform Crystal { get { return crystal; } }
 
-    [SerializeField] int playerGold;
+    [SerializeField] public int playerGold;
     [SerializeField] int startGold;
     [SerializeField] TextMeshProUGUI goldCountTxt;
 
@@ -28,6 +28,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateGoldTxt();
+    }
+
+    void UpdateGoldTxt()
+    {
+        goldCountTxt.text = "GOLD: " + playerGold;
+    }
+
+    public void SpendGold(int towerPrice)
+    {
+        playerGold -= towerPrice;
     }
 }

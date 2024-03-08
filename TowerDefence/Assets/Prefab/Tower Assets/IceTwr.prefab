@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerMat: {fileID: 2100000, guid: d127c7872c4afc84eb5fbc98b05b0f46, type: 2}
+  buildTimer: 30
+  towerPrice: 500
 --- !u!114 &179678807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +255,6 @@ MonoBehaviour:
   isSelectTarget: 0
   range: 6.7
   rateFire: 0.8
-  damage: 11
   rotationPart: {fileID: 2629660278500271483}
   rotSpeed: 1
   bulletPrefab: {fileID: 4012713877510316009, guid: 91cab0d643d94ad4891efccf3708eed5, type: 3}

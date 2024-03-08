@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 775410296044576178}
   - component: {fileID: 775410296044576177}
   - component: {fileID: 775410296044576176}
+  - component: {fileID: 9200747496290698939}
   m_Layer: 0
   m_Name: GoblinEnemy
   m_TagString: enemyTag
@@ -137,7 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   mainSpeed: 3.5
-  speedDebuff: 1.5
   type: 1
   target: {fileID: 0}
   health: 0
@@ -146,7 +146,26 @@ MonoBehaviour:
   healthLvl: 1e00000023000000280000002d0000003200000037000000410000004b0000005500000064000000
   fireDebuffTime: 0
   iceDebuffTime: 0
-  currentTime: 0
+  currentIceTime: 0
+  currentFireTime: 0
+  speedDebuff: 1.5
+  burnDmg: 0
+--- !u!54 &9200747496290698939
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775410296044575823}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &775410295671000344
 PrefabInstance:
   m_ObjectHideFlags: 0

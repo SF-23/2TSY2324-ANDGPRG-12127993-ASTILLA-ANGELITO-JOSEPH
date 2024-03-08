@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerMat: {fileID: 2100000, guid: bbb4051decb9e9948a72ba2d33fc5949, type: 2}
+  buildTimer: 15
+  towerPrice: 200
 --- !u!114 &61963939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,12 +116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  enemyTag: groundEnemyTag
   monsterType: 1
   isSelectTarget: 1
   range: 4.6
   rateFire: 0.5
-  damage: 20
   rotationPart: {fileID: 272194259522358948}
   rotSpeed: 1
   bulletPrefab: {fileID: 8463081876663570972, guid: ec9c51618959b8848ba76d8e01603f91, type: 3}

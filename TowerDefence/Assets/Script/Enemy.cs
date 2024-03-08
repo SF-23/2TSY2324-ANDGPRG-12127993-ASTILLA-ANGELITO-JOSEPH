@@ -60,6 +60,16 @@ public class Enemy : MonoBehaviour
         Debug.Log(this.agent.pathStatus);
 	}
 
+    void DoEnemyDeath()
+    {
+        if(health <= 0)
+        {
+            GameManager.instance.playerGold += gold;
+            SpawnerController.instance.RemoveEnemy(gameObject);
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Arrow projectileDmg = GetComponent<Arrow>();
@@ -72,6 +82,8 @@ public class Enemy : MonoBehaviour
 
         if(other.gameObject.GetComponent<Arrow>())
         {
+            Debug.Log("HIT");
+            Debug.Log(other.gameObject.GetComponent<Arrow>());
             health -= other.gameObject.GetComponent<Arrow>().damage;
 
             if(other.gameObject.name.Contains("IceBall"))
@@ -83,6 +95,7 @@ public class Enemy : MonoBehaviour
                 DebuffEffect(1);
             }
             Destroy(other.gameObject);
+            DoEnemyDeath();
         }
     }
 

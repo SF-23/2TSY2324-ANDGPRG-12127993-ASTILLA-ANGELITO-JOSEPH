@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] Material towerMat;
     [SerializeField] public float buildTimer;
+    [SerializeField] public int towerPrice;
 
     public void Buildable()
     {
