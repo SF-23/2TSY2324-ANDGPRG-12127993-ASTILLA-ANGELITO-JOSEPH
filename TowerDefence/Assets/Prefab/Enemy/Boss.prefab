@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7666862711327512711}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: enemyTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,12 +136,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3031818362596738903}
-  type: 1
+  mainSpeed: 1.5
+  speedDebuff: 0.3
+  type: 2
   target: {fileID: 0}
   health: 0
   gold: 0
   goldLvl: 00000000000000000000000000000000fa00000000000000000000000000000000000000f4010000
   healthLvl: 000000000000000000000000000000006400000000000000000000000000000000000000c8000000
+  fireDebuffTime: 0
+  iceDebuffTime: 0
+  currentTime: 0
 --- !u!1001 &4187085136241480068
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class SpawnerController : MonoBehaviour
 	[SerializeField] GameObject[] enemyPrefab;
 	[SerializeField] GameObject bossPrefab;
 
-	[SerializeField] List<GameObject> enemyList;
+	[SerializeField] public List<GameObject> enemyList;
 
 	[SerializeField] float spawnDelay;
 	[SerializeField] int maxEnemisToSpawn;

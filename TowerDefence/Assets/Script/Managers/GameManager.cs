@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Transform crystal;
     public Transform Crystal { get { return crystal; } }
+
+    [SerializeField] int playerGold;
+    [SerializeField] int startGold;
+    [SerializeField] TextMeshProUGUI goldCountTxt;
 
 	private void Awake()
 	{
@@ -17,7 +22,7 @@ public class GameManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        
+        playerGold = startGold;
     }
 
     // Update is called once per frame

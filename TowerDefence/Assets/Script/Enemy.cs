@@ -7,28 +7,45 @@ public enum MonsterType
 {
     Flying,
     Ground,
+    Boss,
 }
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Navmesh Variables")]
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] float mainSpeed;
+   
 
+    [Header("Enemy Variables")]
     [SerializeField] MonsterType type;
     public MonsterType MonsterType { get { return type; } }
 
     [SerializeField] Transform target;
 
-    [SerializeField] public int health;
+    [SerializeField] public float health;
 
     [SerializeField] public int gold;
 
     [SerializeField] public int[] goldLvl;  //array to set worth of gold for each wave for each enemy
     [SerializeField] public int[] healthLvl; //array to set worth of gold for each wave for each enemy
 
+    [Header("Timers")]
+    [SerializeField] float fireDebuffTime;      //Duration of debuff
+    [SerializeField] float iceDebuffTime;
+    [SerializeField] float currentIceTime;      //current time of debuff
+    [SerializeField] float currentFireTime;
+
+    [Header("Debuff Values")]
+    [SerializeField] float speedDebuff;
+    [SerializeField] float burnDmg;
+
     // Start is called before the first frame update
     void Awake()
     {
         this.agent = GetComponent<NavMeshAgent>();
+        agent.speed = mainSpeed;
+        
     }
 
     private void Update()
@@ -45,10 +62,53 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name.Contains("CrystalCore"))
+        Arrow projectileDmg = GetComponent<Arrow>();
+
+        if (other.gameObject.name.Contains("CrystalCore"))
         {
             SpawnerController.instance.RemoveEnemy(this.gameObject);
             Destroy(this.gameObject);
+        }
+
+        if(other.gameObject.GetComponent<Arrow>())
+        {
+            health -= other.gameObject.GetComponent<Arrow>().damage;
+
+            if(other.gameObject.name.Contains("IceBall"))
+            {
+                DebuffEffect(0);
+            }
+            if(other.gameObject.name.Contains("FireBall"))
+            {
+                DebuffEffect(1);
+            }
+            Destroy(other.gameObject);
+        }
+    }
+
+    void DebuffEffect(int effect)
+    {
+        switch (effect) 
+        {
+            case 0:
+
+                if(Time.time - currentIceTime >= iceDebuffTime)
+                {
+                    agent.speed = mainSpeed;
+                }
+                else
+                {
+                    agent.speed = speedDebuff;
+                }
+               
+                break;
+            case 1:
+
+                if (Time.time - currentFireTime >= fireDebuffTime)
+                {
+                    health -= burnDmg;
+                }
+                break;
         }
     }
 
