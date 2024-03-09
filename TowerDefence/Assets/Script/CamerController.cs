@@ -16,8 +16,8 @@ public class CamerController : MonoBehaviour
     void CameraMovement()
     {
         Vector3 position = this.transform.position;
-        position.x = Mathf.Clamp(position.x, -10f, 10f);
-        position.z = Mathf.Clamp(position.z, -20f, 20f);
+        position.x = Mathf.Clamp(position.x, 5f, 50f);
+        position.z = Mathf.Clamp(position.z, 0f, 40f);
         transform.position = position;
 
 
