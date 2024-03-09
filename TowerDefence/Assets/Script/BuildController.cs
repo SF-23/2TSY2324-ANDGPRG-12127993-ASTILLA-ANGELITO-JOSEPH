@@ -3,8 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[System.Serializable]
+public class TowerData
+{
+    public string _name;
+    public GameObject _towerPrefab;
+    public float _damage;
+    public float _fireRate;
+    public float _range;
+    public float _rotSpeed;
+    public float _price;
+}
+
 public class BuildController : MonoBehaviour
 {
+    public static BuildController instance;
+
     [SerializeField] float buildableOffsetY = 2;
     Ray ray; // shoots a line from your origin to the end point of your trajectory
     [SerializeField] RaycastHit hit;// which object that is being hit
@@ -14,32 +28,28 @@ public class BuildController : MonoBehaviour
     [SerializeField] GameObject draggableTower; // this temp until you a build tower
     [SerializeField] Tower tempTower;
 
-    public void SpawnArcherTwr()
+    [SerializeField] public List<TowerData> towerData = new List<TowerData>();
+
+
+    private void Awake()
     {
-        GameObject twrArcher = (GameObject)Instantiate(prefabTowers[0]);
+        instance = this;
+    }
+
+    public void ClickButton(int index)
+    {
+        if (GameManager.instance.playerGold >= towerData[index]._price)
+        {
+            SpawnTwr(index);
+        }
+    }
+
+    void SpawnTwr(int index)
+    {
+        GameObject twrArcher = (GameObject)Instantiate(prefabTowers[index]);
         draggableTower = twrArcher;
         tempTower = twrArcher.GetComponent<Tower>();
-    }
-
-    public void SpawnCannon()
-    {
-        GameObject twrCannon = (GameObject)Instantiate(prefabTowers[1]);
-        draggableTower = twrCannon;
-        tempTower = twrCannon.GetComponent<Tower>();
-    }
-
-    public void SpawnIceTwr()
-    {
-        GameObject twrIce = (GameObject)Instantiate(prefabTowers[2]);
-        draggableTower = twrIce;
-        tempTower = twrIce.GetComponent<Tower>();
-    }
-
-    public void SpawnFireTwr()
-    {
-        GameObject twrFire = (GameObject)Instantiate(prefabTowers[3]);
-        draggableTower = twrFire;
-        tempTower = twrFire.GetComponent<Tower>();
+        tempTower.GetComponent<TowerAimShoot>().SetAttributes(towerData[index]);
     }
 
     Vector3 SnapToGrid(Vector3 towerPos)
@@ -51,10 +61,10 @@ public class BuildController : MonoBehaviour
 
     void Update()
     {
-        MouseTowerInput();
+       TowerCreation();
     }
 
-    void MouseTowerInput()
+    void TowerCreation()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         allObject = Physics.RaycastAll(ray);   // all object
@@ -72,8 +82,7 @@ public class BuildController : MonoBehaviour
                     tempTower.Buildable();
                     if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                     {
-                        BuildTower();
-                        tempTower.GetComponent<TowerAimShoot>().enabled = true;
+                        tempTower.BuildTower();
                         draggableTower = null;
                     }
                 }
@@ -83,38 +92,5 @@ public class BuildController : MonoBehaviour
                 }
             }
         }
-    }
-
-    void BuildTower()
-    {
-        if(CanPlayerBuyTower())
-        {
-            StartCoroutine(CoroutineBuildTower());
-        }
-        else
-        {
-            Debug.Log("Not Enough Credits");
-        }
-    }
-
-    IEnumerator CoroutineBuildTower()
-    {
-        float startTime = Time.time;
-
-        GameManager.instance.SpendGold(tempTower.towerPrice);
-        
-        tempTower.Building();
-        
-        while (Time.time < startTime + tempTower.buildTimer)
-        {
-            tempTower.GetComponent<TowerAimShoot>().enabled = false;
-            yield return new WaitForSeconds(tempTower.buildTimer);
-        }
-        tempTower.Build();
-    }
-
-    public bool CanPlayerBuyTower()
-    {
-        return GameManager.instance.playerGold >= tempTower.towerPrice;
     }
 }

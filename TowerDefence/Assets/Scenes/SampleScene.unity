@@ -217,11 +217,11 @@ RectTransform:
   m_Children:
   - {fileID: 1666317864}
   - {fileID: 1991862237}
+  - {fileID: 1899901703}
   - {fileID: 480368345}
   - {fileID: 2047408459}
   - {fileID: 2063340664}
   - {fileID: 1730449463}
-  - {fileID: 1899901703}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -633,18 +633,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480368344}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.8206, y: 2.8206, z: 2.8206}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 751171679}
   m_Father: {fileID: 18486377}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.6744075}
   m_AnchorMax: {x: 1, y: 0.6744075}
-  m_AnchoredPosition: {x: -111, y: -16}
+  m_AnchoredPosition: {x: -111.00003, y: -15.9999695}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &480368346
@@ -693,8 +693,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 756912880}
         m_TargetAssemblyTypeName: BuildController, Assembly-CSharp
-        m_MethodName: SpawnArcherTwr
-        m_Mode: 1
+        m_MethodName: ClickButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -967,6 +967,35 @@ MonoBehaviour:
   - {fileID: 1281443655498147940, guid: 292cb30db9bbbb947a85beece1c75540, type: 3}
   draggableTower: {fileID: 0}
   tempTower: {fileID: 0}
+  towerData:
+  - _name: Archer
+    _towerPrefab: {fileID: 2032930907990053717, guid: ac418a2842237a44e99add0b6db44d6c, type: 3}
+    _damage: 30
+    _fireRate: 1
+    _range: 10
+    _rotSpeed: 1
+    _price: 100
+  - _name: CannonTwr
+    _towerPrefab: {fileID: 272194259522458242, guid: 56a4562a18ca881499f1aad3178e2f29, type: 3}
+    _damage: 20
+    _fireRate: 1
+    _range: 4.6
+    _rotSpeed: 1
+    _price: 200
+  - _name: FireTwr
+    _towerPrefab: {fileID: 1281443655498147940, guid: 292cb30db9bbbb947a85beece1c75540, type: 3}
+    _damage: 20
+    _fireRate: 1
+    _range: 6.7
+    _rotSpeed: 1
+    _price: 500
+  - _name: IceTwr
+    _towerPrefab: {fileID: 2629660278499916127, guid: 3084b92c924bd1c4da2ac2d34a158c00, type: 3}
+    _damage: 20
+    _fireRate: 1
+    _range: 6.7
+    _rotSpeed: 1
+    _price: 500
 --- !u!1 &775693404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1557,7 @@ RectTransform:
   m_Children:
   - {fileID: 341500281}
   m_Father: {fileID: 18486377}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.6744075}
   m_AnchorMax: {x: 1, y: 0.6744075}
@@ -1581,12 +1610,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 756912880}
         m_TargetAssemblyTypeName: BuildController, Assembly-CSharp
-        m_MethodName: SpawnFireTwr
-        m_Mode: 1
+        m_MethodName: ClickButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1803,7 +1832,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 18486377}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2123,7 +2152,7 @@ RectTransform:
   m_Children:
   - {fileID: 963541874}
   m_Father: {fileID: 18486377}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.6744075}
   m_AnchorMax: {x: 1, y: 0.6744075}
@@ -2176,12 +2205,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 756912880}
         m_TargetAssemblyTypeName: BuildController, Assembly-CSharp
-        m_MethodName: SpawnCannon
-        m_Mode: 1
+        m_MethodName: ClickButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2257,7 +2286,7 @@ RectTransform:
   m_Children:
   - {fileID: 239233907}
   m_Father: {fileID: 18486377}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.6744075}
   m_AnchorMax: {x: 1, y: 0.6744075}
@@ -2310,12 +2339,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 756912880}
         m_TargetAssemblyTypeName: BuildController, Assembly-CSharp
-        m_MethodName: SpawnIceTwr
-        m_Mode: 1
+        m_MethodName: ClickButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

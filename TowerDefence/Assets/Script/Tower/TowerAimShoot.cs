@@ -13,6 +13,7 @@ public class TowerAimShoot : MonoBehaviour
     [SerializeField] float range;
     [SerializeField] float rateFire;
     [SerializeField] Transform rotationPart;
+    [SerializeField] float damage;
     [SerializeField] float rotSpeed;
 
     [Header("Bullet Spawner")]
@@ -20,10 +21,19 @@ public class TowerAimShoot : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     [SerializeField] float reloadTime;
 
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+    }
+
+    public void SetAttributes(TowerData towerData)
+    {
+        range = towerData._range;
+        rateFire = towerData._fireRate;
+        damage = towerData._damage;
+        rotSpeed = towerData._rotSpeed;
     }
 
     // Update is called once per frame
@@ -76,13 +86,7 @@ public class TowerAimShoot : MonoBehaviour
         GameObject bullet = (GameObject) Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
         Arrow arrow = bullet.GetComponent<Arrow>();
         arrow.target = target.transform;
-
-        /*
-        if(arrow != null) 
-        {
-            arrow.Seek(target);
-        }
-        */
+        arrow.damage = damage;
     }
 
    

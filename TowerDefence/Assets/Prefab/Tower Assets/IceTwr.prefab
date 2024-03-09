@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerMat: {fileID: 2100000, guid: d127c7872c4afc84eb5fbc98b05b0f46, type: 2}
-  buildTimer: 30
+  buildTimer: 8
   towerPrice: 500
 --- !u!114 &179678807
 MonoBehaviour:

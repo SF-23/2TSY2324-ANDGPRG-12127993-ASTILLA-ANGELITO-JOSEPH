@@ -15,6 +15,12 @@ public class CamerController : MonoBehaviour
 
     void CameraMovement()
     {
+        Vector3 position = this.transform.position;
+        position.x = Mathf.Clamp(position.x, -10f, 10f);
+        position.z = Mathf.Clamp(position.z, -20f, 20f);
+        transform.position = position;
+
+
         if (Input.GetKey(KeyCode.W) || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
             this.transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
