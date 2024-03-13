@@ -15,6 +15,18 @@ public class TowerData
     public float _price;
 }
 
+[System.Serializable]
+public class UpgradeTower
+{
+    public float _damage;
+    public float _fireRate;
+    public float _range;
+    public float _price;
+    public float _blastRadius;
+}
+
+
+
 public class BuildController : MonoBehaviour
 {
     public static BuildController instance;
