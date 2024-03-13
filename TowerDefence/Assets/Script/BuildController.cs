@@ -40,6 +40,8 @@ public class BuildController : MonoBehaviour
     [SerializeField] GameObject draggableTower; // this temp until you a build tower
     [SerializeField] Tower tempTower;
 
+    [SerializeField] Tower builtTower;
+
     [SerializeField] public List<TowerData> towerData = new List<TowerData>();
 
 
@@ -62,6 +64,24 @@ public class BuildController : MonoBehaviour
         draggableTower = twrArcher;
         tempTower = twrArcher.GetComponent<Tower>();
         tempTower.GetComponent<TowerAimShoot>().SetAttributes(towerData[index]);
+        builtTower = null;
+    }
+
+    private void OnMouseDown()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if(builtTower != null)
+        {
+            SelectTower(builtTower);
+        }
+    }
+
+    void SelectTower(Tower tower)
+    {
+        builtTower = tower;
+        tempTower = null;
     }
 
     Vector3 SnapToGrid(Vector3 towerPos)
