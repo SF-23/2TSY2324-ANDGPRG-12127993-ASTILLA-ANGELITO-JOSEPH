@@ -12,35 +12,23 @@ public class TowerData
     public float _fireRate;
     public float _range;
     public float _rotSpeed;
-    public float _price;
+    public int _price;
 }
-
-[System.Serializable]
-public class UpgradeTower
-{
-    public float _damage;
-    public float _fireRate;
-    public float _range;
-    public float _price;
-    public float _blastRadius;
-}
-
 
 public class BuildController : MonoBehaviour
 {
     public static BuildController instance;
 
+    [Header("RayCasting")]
     [SerializeField] float buildableOffsetY = 2;
     Ray ray; // shoots a line from your origin to the end point of your trajectory
     [SerializeField] RaycastHit hit;// which object that is being hit
     [SerializeField] RaycastHit[] allObject;
 
+    [Header("Tower Variables")]
     [SerializeField] GameObject[] prefabTowers; // list of prefab tower that can build in your game
     [SerializeField] GameObject draggableTower; // this temp until you a build tower
     [SerializeField] Tower tempTower;
-
-    [SerializeField] Tower builtTower;
-    [SerializeField] Tower selectedTower;
 
     [SerializeField] public List<TowerData> towerData = new List<TowerData>();
 
@@ -60,28 +48,10 @@ public class BuildController : MonoBehaviour
 
     void SpawnTwr(int index)
     {
-        GameObject twrArcher = (GameObject)Instantiate(prefabTowers[index]);
+        GameObject twrArcher = (GameObject)Instantiate(prefabTowers[index], hit.point, Quaternion.identity);
         draggableTower = twrArcher;
         tempTower = twrArcher.GetComponent<Tower>();
         tempTower.GetComponent<TowerAimShoot>().SetAttributes(towerData[index]);
-        builtTower = null;
-    }
-
-    private void OnMouseDown()
-    {
-        /*
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-        */
-
-        Debug.Log("TOWER");
-
-    }
-
-    void SelectTower(Tower tower)
-    {
-        builtTower = tower;
-        tempTower = null;
     }
 
     Vector3 SnapToGrid(Vector3 towerPos)
@@ -94,28 +64,7 @@ public class BuildController : MonoBehaviour
     void Update()
     {
         TowerCreation();
-        //TowerSelection();
     }
-
-    /*
-    void TowerSelection()
-    {
-       ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-       allObject = Physics.RaycastAll(ray);   // all object
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider.gameObject.GetComponent<Tower>() != null)
-            {
-                if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-                {
-                    selectedTower = hit.collider.gameObject.GetComponent<Tower>();
-                }  
-            }
-
-        }
-    }
-    */
 
     void TowerCreation()
     {
@@ -130,12 +79,14 @@ public class BuildController : MonoBehaviour
             {
                 draggableTower.transform.position = SnapToGrid(hit.point);
                 tempTower.GetComponent<TowerAimShoot>().enabled = false;
+               
                 if (hit.point.y > buildableOffsetY)
                 {
                     tempTower.Buildable();
                     if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                     {
                         tempTower.BuildTower();
+                        tempTower.GetComponent<Collider>().enabled = true;
                         draggableTower = null;
                     }
                 }

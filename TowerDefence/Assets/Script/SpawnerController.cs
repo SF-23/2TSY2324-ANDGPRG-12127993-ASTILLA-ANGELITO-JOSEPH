@@ -6,13 +6,16 @@ using TMPro;
 public class SpawnerController : MonoBehaviour
 {
 	public static SpawnerController instance;
-	[SerializeField] Transform spawnPoint;
+
+    [Header("Prefabs")]
+    [SerializeField] Transform spawnPoint;
 	[SerializeField] GameObject[] enemyPrefab;
 	[SerializeField] GameObject bossPrefab;
 
 	[SerializeField] public List<GameObject> enemyList;
 
-	[SerializeField] float spawnDelay;
+    [Header("Variables")]
+    [SerializeField] float spawnDelay;
 	[SerializeField] int maxEnemisToSpawn;
 	[SerializeField] public int enemiesToSpawn;
 	[SerializeField] public int waveCounter;

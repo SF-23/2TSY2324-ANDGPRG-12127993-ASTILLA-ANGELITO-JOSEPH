@@ -149,7 +149,7 @@ MonoBehaviour:
   currentIceTime: 0
   currentFireTime: 0
   speedDebuff: 0.3
-  burnDmg: 0
+  burnDmg: 5
 --- !u!54 &3338668816451841928
 Rigidbody:
   m_ObjectHideFlags: 0

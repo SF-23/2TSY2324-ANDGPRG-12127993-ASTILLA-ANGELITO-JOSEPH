@@ -31,8 +31,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public int[] healthLvl; //array to set worth of gold for each wave for each enemy
 
     [Header("Timers")]
-    [SerializeField] float fireDebuffTime;      //Duration of debuff
-    [SerializeField] float iceDebuffTime;
+    [SerializeField] public float fireDebuffTime;      //Duration of debuff
+    [SerializeField] public float iceDebuffTime;
     [SerializeField] float currentIceTime;      //current time of debuff
     [SerializeField] float currentFireTime;
 
@@ -48,9 +48,9 @@ public class Enemy : MonoBehaviour
         
     }
 
-    private void Update()
+    private void Start()
     {
-        GoldHealthUpdate();
+        GoldHealthUpdate();   //To update the health of enemy at the start of the wave
     }
 
     public void SetTarget(Transform target)
@@ -82,11 +82,9 @@ public class Enemy : MonoBehaviour
 
         if(other.gameObject.GetComponent<Arrow>())
         {
-            Debug.Log("HIT");
-            Debug.Log(other.gameObject.GetComponent<Arrow>());
             health -= other.gameObject.GetComponent<Arrow>().damage;
-
-            if(other.gameObject.name.Contains("IceBall"))
+            
+            if (other.gameObject.name.Contains("IceBall"))
             {
                 DebuffEffect(0);
             }
@@ -125,7 +123,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void GoldHealthUpdate()
+    public void GoldHealthUpdate()
     {
         int waveCounter = SpawnerController.instance.waveCounter - 1;
       

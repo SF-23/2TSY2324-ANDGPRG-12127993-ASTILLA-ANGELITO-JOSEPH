@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+
+
 public class Tower : MonoBehaviour
 {
     [SerializeField] Material towerMat;
     [SerializeField] public float buildTimer;
     [SerializeField] public int towerPrice;
-
+    [SerializeField] public GameObject nodeUI;
 
     public void Buildable()
     {

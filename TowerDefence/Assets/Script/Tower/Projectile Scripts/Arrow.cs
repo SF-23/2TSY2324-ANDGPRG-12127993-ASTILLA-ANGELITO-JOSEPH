@@ -5,9 +5,19 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] public Transform target;
+    [SerializeField] public SphereCollider sphereCollider;
     [SerializeField] float speed;
+    [SerializeField] public float debuffTime;
     [SerializeField] public float damage;
     private float distanceThisFrame;
+
+    private void Awake()
+    {
+       if(this.GetComponent<Collider>().GetType() == typeof(SphereCollider))
+       {
+            sphereCollider = (SphereCollider)this.GetComponent<Collider>();
+       }
+    }
 
     // Update is called once per frame
     void Update()

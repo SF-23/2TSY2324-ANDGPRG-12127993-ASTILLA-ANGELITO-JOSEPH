@@ -112,7 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  sphereCollider: {fileID: 0}
   speed: 60
+  debuffTime: 0
   damage: 30
 --- !u!1001 &1890377608581220285
 PrefabInstance:

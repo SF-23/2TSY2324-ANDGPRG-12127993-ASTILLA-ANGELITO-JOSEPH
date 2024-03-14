@@ -1,6 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+[System.Serializable]
+public class UpgradeTower
+{
+    public int teir;
+    public int _price;
+    public float _damage;
+    public float _range;
+    public float _fireRate;
+    public float _blastRadius;
+    public float _dotEffect;
+}
 
 public class TowerAimShoot : MonoBehaviour
 {
@@ -20,6 +33,9 @@ public class TowerAimShoot : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform spawnPoint;
     [SerializeField] float reloadTime;
+
+    [SerializeField] public List<UpgradeTower> upgradeTowers = new List<UpgradeTower>();
+
 
 
     // Start is called before the first frame update
@@ -102,5 +118,36 @@ public class TowerAimShoot : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void ClickUpgradeButton(int tier)
+    {
+        if(GameManager.instance.playerGold >= upgradeTowers[tier]._price) 
+        {
+            GameManager.instance.playerGold -= upgradeTowers[tier]._price;
+            towerUpgrade(tier);
+        }
+
+        tier += 1;
+        Debug.Log(tier);
+    }
+
+    void towerUpgrade(int tier)
+    {
+        damage += upgradeTowers[tier]._damage;
+        range += upgradeTowers[tier]._range;
+        rateFire += upgradeTowers[tier]._fireRate;
+
+        if(bulletPrefab.GetComponent<Arrow>().sphereCollider == true)
+        {
+            bulletPrefab.GetComponent<Arrow>().sphereCollider.radius += upgradeTowers[tier]._blastRadius;
+        }
+
+        if(bulletPrefab.name == "FireBall" || bulletPrefab.name == "IceBall" &&
+            bulletPrefab.GetComponent<Arrow>().target.GetComponent<Enemy>() == target.GetComponent<Enemy>())
+        {
+            target.GetComponent<Enemy>().iceDebuffTime += bulletPrefab.GetComponent<Arrow>().debuffTime;
+            target.GetComponent<Enemy>().fireDebuffTime += bulletPrefab.GetComponent<Arrow>().debuffTime;
+        }
     }
 }
