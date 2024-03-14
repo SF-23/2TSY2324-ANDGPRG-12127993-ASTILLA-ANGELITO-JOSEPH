@@ -26,7 +26,6 @@ public class UpgradeTower
 }
 
 
-
 public class BuildController : MonoBehaviour
 {
     public static BuildController instance;
@@ -41,6 +40,7 @@ public class BuildController : MonoBehaviour
     [SerializeField] Tower tempTower;
 
     [SerializeField] Tower builtTower;
+    [SerializeField] Tower selectedTower;
 
     [SerializeField] public List<TowerData> towerData = new List<TowerData>();
 
@@ -69,13 +69,13 @@ public class BuildController : MonoBehaviour
 
     private void OnMouseDown()
     {
+        /*
         if (EventSystem.current.IsPointerOverGameObject())
             return;
+        */
 
-        if(builtTower != null)
-        {
-            SelectTower(builtTower);
-        }
+        Debug.Log("TOWER");
+
     }
 
     void SelectTower(Tower tower)
@@ -93,8 +93,29 @@ public class BuildController : MonoBehaviour
 
     void Update()
     {
-       TowerCreation();
+        TowerCreation();
+        //TowerSelection();
     }
+
+    /*
+    void TowerSelection()
+    {
+       ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+       allObject = Physics.RaycastAll(ray);   // all object
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.gameObject.GetComponent<Tower>() != null)
+            {
+                if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+                {
+                    selectedTower = hit.collider.gameObject.GetComponent<Tower>();
+                }  
+            }
+
+        }
+    }
+    */
 
     void TowerCreation()
     {

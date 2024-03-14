@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2629660278500271481}
   - component: {fileID: 2629660278496879961}
   - component: {fileID: 2629660278497978265}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2629660278500271483}
   - component: {fileID: 2629660278496879963}
   - component: {fileID: 2629660278497978267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 2629660278490417819}
   - component: {fileID: 2629660278499885049}
   - component: {fileID: 179678807}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: IceTwr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,6 +256,7 @@ MonoBehaviour:
   range: 6.7
   rateFire: 0.8
   rotationPart: {fileID: 2629660278500271483}
+  damage: 0
   rotSpeed: 1
   bulletPrefab: {fileID: 4012713877510316009, guid: 91cab0d643d94ad4891efccf3708eed5, type: 3}
   spawnPoint: {fileID: 2629660278500271483}

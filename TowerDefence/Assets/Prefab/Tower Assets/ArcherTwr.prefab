@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2032930907982766237}
   - component: {fileID: 78402251819030064}
   - component: {fileID: 1301499317}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ArcherTwr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,6 +89,7 @@ MonoBehaviour:
   range: 10
   rateFire: 1
   rotationPart: {fileID: 2032930907990478715}
+  damage: 0
   rotSpeed: 1
   bulletPrefab: {fileID: 1890377607381866086, guid: d4d4f5bb5946c1f4c843369b5d881feb, type: 3}
   spawnPoint: {fileID: 2032930907990478713}
@@ -103,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2032930907990478715}
   - component: {fileID: 2032930907986878045}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +193,7 @@ GameObject:
   - component: {fileID: 2032930907990478709}
   - component: {fileID: 2032930907989151581}
   - component: {fileID: 2032930907988053405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2032930907990478717}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2032930907990478713}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1281443655497987136}
   - component: {fileID: 1281443655497217120}
   - component: {fileID: 1281443655496218272}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1281443655497987138}
   - component: {fileID: 1281443655497217122}
   - component: {fileID: 1281443655496218274}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 1281443655490755490}
   - component: {fileID: 1281443655498116860}
   - component: {fileID: 1808881175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FireTwr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,6 +256,7 @@ MonoBehaviour:
   range: 6.7
   rateFire: 0.8
   rotationPart: {fileID: 1281443655497987136}
+  damage: 0
   rotSpeed: 1
   bulletPrefab: {fileID: 4012713877510316009, guid: 35569f4d2d70c1f499bb3ec9c54e172d, type: 3}
   spawnPoint: {fileID: 1281443655497987138}
@@ -271,7 +272,7 @@ GameObject:
   - component: {fileID: 1281443655497987142}
   - component: {fileID: 1281443655497217126}
   - component: {fileID: 1281443655496218278}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

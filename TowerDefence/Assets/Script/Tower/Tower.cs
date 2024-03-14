@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
     [SerializeField] public float buildTimer;
     [SerializeField] public int towerPrice;
 
+
     public void Buildable()
     {
         towerMat.color = Color.green;
