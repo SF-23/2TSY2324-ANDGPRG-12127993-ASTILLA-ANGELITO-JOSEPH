@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform target;
 
     [SerializeField] public float health;
-
     [SerializeField] public int gold;
 
     [SerializeField] public int[] goldLvl;  //array to set worth of gold for each wave for each enemy
@@ -78,6 +77,11 @@ public class Enemy : MonoBehaviour
         {
             SpawnerController.instance.RemoveEnemy(this.gameObject);
             Destroy(this.gameObject);
+
+            if (MonsterType.Equals(3))
+            {
+                GameManager.instance.playerHealth -= 50;
+            }
         }
 
         if(other.gameObject.GetComponent<Arrow>())

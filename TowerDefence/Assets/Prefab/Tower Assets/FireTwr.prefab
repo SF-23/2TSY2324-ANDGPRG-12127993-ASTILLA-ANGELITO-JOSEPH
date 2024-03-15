@@ -169,6 +169,7 @@ MonoBehaviour:
     _fireRate: 5
     _blastRadius: 4
     _dotEffect: 8
+  upgradePrice: {fileID: 7244350171874654367}
 --- !u!1001 &4220591909484149147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -362,3 +363,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5045155466233031656, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
   m_PrefabInstance: {fileID: 5708597923018018981}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7244350171874654367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3148044218285779002, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
+  m_PrefabInstance: {fileID: 5708597923018018981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

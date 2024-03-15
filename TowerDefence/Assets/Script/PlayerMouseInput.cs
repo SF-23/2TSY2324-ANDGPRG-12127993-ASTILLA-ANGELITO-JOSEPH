@@ -13,7 +13,7 @@ public class PlayerMouseInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -29,9 +29,14 @@ public class PlayerMouseInput : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit)) 
         {
-            Debug.DrawLine(ray.origin, hit.point);
+            //Debug.DrawLine(ray.origin, hit.point);
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
+                if (selectedTower != null)
+                {
+                    selectedTower.nodeUI.SetActive(false);
+                }
+                
                 selectedTower = hit.collider.gameObject.GetComponent<Tower>();
                
                 if(selectedTower != null) 

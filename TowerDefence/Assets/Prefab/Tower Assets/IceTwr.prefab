@@ -390,6 +390,7 @@ MonoBehaviour:
     _fireRate: 5
     _blastRadius: 4
     _dotEffect: 8
+  upgradePrice: {fileID: 689579082345980422}
 --- !u!1001 &2459520701722315324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -445,21 +446,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: NodeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5045155466233031663, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5045155467153779162, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5045155467153779162, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5045155467153779162, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5045155467153779162, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -19.885
       objectReference: {fileID: 0}
     - target: {fileID: 5045155467153779163, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -483,6 +488,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
+--- !u!114 &689579082345980422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3148044218285779002, guid: fd4817238f9b986429c4aefa08d42061, type: 3}
+  m_PrefabInstance: {fileID: 2459520701722315324}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7215337415048716755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5045155466233031663, guid: fd4817238f9b986429c4aefa08d42061, type: 3}

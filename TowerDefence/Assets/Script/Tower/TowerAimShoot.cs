@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -36,12 +37,13 @@ public class TowerAimShoot : MonoBehaviour
 
     [SerializeField] public List<UpgradeTower> upgradeTowers = new List<UpgradeTower>();
 
-
+    //[SerializeField] TextMeshProUGUI upgradePrice;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        //upgradePrice.text = 100.ToString();
     }
 
     public void SetAttributes(TowerData towerData)
@@ -60,7 +62,6 @@ public class TowerAimShoot : MonoBehaviour
 
         Rotate();
 
-        
         if(reloadTime <= 0f)
         {
             Shoot();
@@ -69,6 +70,13 @@ public class TowerAimShoot : MonoBehaviour
        
         reloadTime -= Time.deltaTime;
     }
+
+    /*
+    void txtUpgrade(int tier)
+    {
+        upgradePrice.text = upgradeTowers[tier]._price.ToString();
+    }
+    */
 
     void UpdateTarget()
     {
@@ -122,6 +130,7 @@ public class TowerAimShoot : MonoBehaviour
 
     public void ClickUpgradeButton(int tier)
     {
+        //txtUpgrade(tier);
         if(GameManager.instance.playerGold >= upgradeTowers[tier]._price) 
         {
             GameManager.instance.playerGold -= upgradeTowers[tier]._price;
