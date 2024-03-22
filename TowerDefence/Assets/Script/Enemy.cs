@@ -78,6 +78,8 @@ public class Enemy : MonoBehaviour
             SpawnerController.instance.RemoveEnemy(this.gameObject);
             Destroy(this.gameObject);
 
+            GameManager.instance.playerHealth -= Random.Range(2, 5);
+
             if (MonsterType.Equals(3))
             {
                 GameManager.instance.playerHealth -= 50;

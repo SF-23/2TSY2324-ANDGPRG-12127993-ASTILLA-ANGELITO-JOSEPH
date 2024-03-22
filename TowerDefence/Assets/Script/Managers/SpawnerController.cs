@@ -30,12 +30,22 @@ public class SpawnerController : MonoBehaviour
 		instance = this;
 	}
 
-	private void Start()
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
+    private void Start()
 	{
-		waveCounter = 1;
-		WaveTxtUpdate(waveCounter);
-		StartCoroutine(StartSpawnWave()); 
+        StartRound();
 	}
+
+	public void StartRound()
+	{
+        waveCounter = 1;
+        WaveTxtUpdate(waveCounter);
+        StartCoroutine(StartSpawnWave());
+    }
 
     private void Update()
     {

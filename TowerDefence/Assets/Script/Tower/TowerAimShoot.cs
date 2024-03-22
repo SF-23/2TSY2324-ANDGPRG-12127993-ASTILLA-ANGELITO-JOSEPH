@@ -71,13 +71,6 @@ public class TowerAimShoot : MonoBehaviour
         reloadTime -= Time.deltaTime;
     }
 
-    /*
-    void txtUpgrade(int tier)
-    {
-        upgradePrice.text = upgradeTowers[tier]._price.ToString();
-    }
-    */
-
     void UpdateTarget()
     {
         GameObject nearestEnemy = null;
@@ -111,6 +104,26 @@ public class TowerAimShoot : MonoBehaviour
         Arrow arrow = bullet.GetComponent<Arrow>();
         arrow.target = target.transform;
         arrow.damage = damage;
+
+        if (BuildController.instance.towerData[0]._name == "Archer")
+        {
+            SoundManager.instance.DoArcherSfx();
+        }
+
+        if (BuildController.instance.towerData[1]._name == "CannonTwr")
+        {
+            SoundManager.instance.DoArcherSfx();
+        }
+
+        if (BuildController.instance.towerData[2]._name == "FireTwr")
+        {
+            SoundManager.instance.DoArcherSfx();
+        }
+
+        if (BuildController.instance.towerData[3]._name == "IceTwr")
+        {
+            SoundManager.instance.DoArcherSfx();
+        }
     }
 
    

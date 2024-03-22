@@ -38,11 +38,20 @@ public class BuildController : MonoBehaviour
         instance = this;
     }
 
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
     public void ClickButton(int index)
     {
         if (GameManager.instance.playerGold >= towerData[index]._price)
         {
             SpawnTwr(index);
+        }
+        else
+        {
+            SoundManager.instance.DoNoMoneySfx();
         }
     }
 
