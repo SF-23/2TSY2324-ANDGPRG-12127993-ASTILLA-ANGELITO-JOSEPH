@@ -10,12 +10,6 @@ public class PlayerMouseInput : MonoBehaviour
     [SerializeField] RaycastHit hit;// which object that is being hit
     [SerializeField] RaycastHit[] allObject;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
     // Update is called once per frame
     void Update()
     {

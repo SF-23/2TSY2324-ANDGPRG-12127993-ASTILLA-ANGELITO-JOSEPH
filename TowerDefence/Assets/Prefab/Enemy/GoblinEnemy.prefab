@@ -144,8 +144,8 @@ MonoBehaviour:
   gold: 0
   goldLvl: 280000002d000000320000003c00000046000000500000005a000000640000006e00000096000000
   healthLvl: 280000002d00000032000000370000003c00000041000000460000005a0000005f00000064000000
-  fireDebuffTime: 0
-  iceDebuffTime: 0
+  fireDebuffTime: 5
+  iceDebuffTime: 5
   currentIceTime: 0
   currentFireTime: 0
   speedDebuff: 1.5

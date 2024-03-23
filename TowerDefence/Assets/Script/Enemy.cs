@@ -108,14 +108,17 @@ public class Enemy : MonoBehaviour
         switch (effect) 
         {
             case 0:
-
-                if(Time.time - currentIceTime >= iceDebuffTime)
+                Debug.Log("THIS");
+                if(Time.time - currentIceTime >= iceDebuffTime) //done via update
                 {
                     agent.speed = mainSpeed;
+                    Debug.Log("NormalSpeed");
+                    Debug.Log(Time.time - currentIceTime >= iceDebuffTime);
                 }
                 else
                 {
                     agent.speed = speedDebuff;
+                    Debug.Log("SlowSpeed");
                 }
                
                 break;
