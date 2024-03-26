@@ -56,6 +56,6 @@ public class SoundManager : MonoBehaviour
 
     public void DoNoMoneySfx() 
     {
-        NoMoneySfx.Play();    
+        NoMoneySfx.Play();
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Tower : MonoBehaviour
 {
@@ -8,26 +9,33 @@ public class Tower : MonoBehaviour
     [SerializeField] public float buildTimer;
     [SerializeField] public int towerPrice;
     [SerializeField] public GameObject nodeUI;
-
+    [SerializeField] public bool isBuilding;
+ 
     public void Buildable()
     {
         towerMat.color = Color.green;
+        isBuilding = true;
     }
     public void NonBuildable()
     {
         towerMat.color = Color.red;
+        isBuilding = true;
     }
+
 
     public void Build()
     {
         // animation 
         this.gameObject.GetComponent<TowerAimShoot>().enabled = true;
         towerMat.color = Color.white;
+        isBuilding = false;
     }
 
     public void Building()
     {
+        //nodeUI.SetActive(false);
         towerMat.color = Color.yellow;
+        isBuilding = true;
     }
 
     public void BuildTower()
@@ -41,7 +49,6 @@ public class Tower : MonoBehaviour
             Debug.Log("YOU'RE POOR");
         }
     }
-
 
     IEnumerator ConstructingTwr()
     {
@@ -64,4 +71,5 @@ public class Tower : MonoBehaviour
     {
         return GameManager.instance.playerGold >= towerPrice;
     }
+
 }

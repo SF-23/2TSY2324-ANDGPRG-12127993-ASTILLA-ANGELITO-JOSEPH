@@ -37,13 +37,10 @@ public class TowerAimShoot : MonoBehaviour
 
     [SerializeField] public List<UpgradeTower> upgradeTowers = new List<UpgradeTower>();
 
-    //[SerializeField] TextMeshProUGUI upgradePrice;
-
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
-        //upgradePrice.text = 100.ToString();
     }
 
     public void SetAttributes(TowerData towerData)
@@ -104,26 +101,7 @@ public class TowerAimShoot : MonoBehaviour
         Arrow arrow = bullet.GetComponent<Arrow>();
         arrow.target = target.transform;
         arrow.damage = damage;
-
-        if (BuildController.instance.towerData[0]._name == "Archer")
-        {
-            SoundManager.instance.DoArcherSfx();
-        }
-
-        if (BuildController.instance.towerData[1]._name == "CannonTwr")
-        {
-            SoundManager.instance.DoArcherSfx();
-        }
-
-        if (BuildController.instance.towerData[2]._name == "FireTwr")
-        {
-            SoundManager.instance.DoArcherSfx();
-        }
-
-        if (BuildController.instance.towerData[3]._name == "IceTwr")
-        {
-            SoundManager.instance.DoArcherSfx();
-        }
+        SoundManager.instance.DoArcherSfx();
     }
 
    

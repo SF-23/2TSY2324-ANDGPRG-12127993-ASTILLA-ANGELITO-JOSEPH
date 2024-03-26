@@ -20,7 +20,7 @@ public class BuildController : MonoBehaviour
     public static BuildController instance;
 
     [Header("RayCasting")]
-    [SerializeField] float buildableOffsetY = 2;
+    [SerializeField] float buildableOffsetY = 3;
     Ray ray; // shoots a line from your origin to the end point of your trajectory
     [SerializeField] RaycastHit hit;// which object that is being hit
     [SerializeField] RaycastHit[] allObject;
@@ -47,7 +47,7 @@ public class BuildController : MonoBehaviour
     {
         if (GameManager.instance.playerGold >= towerData[index]._price)
         {
-            SpawnTwr(index);
+            SpawnTwr(index); 
         }
         else
         {

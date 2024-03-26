@@ -56,11 +56,6 @@ public class GameManager : MonoBehaviour
             DoGameOver();
             SoundManager.instance.DoGameOverSfx();
         }
-
-        if(playerGold <= 0) 
-        {
-            SoundManager.instance.DoNoMoneySfx();
-        }
     }
 
     void UpdateGoldTxt()

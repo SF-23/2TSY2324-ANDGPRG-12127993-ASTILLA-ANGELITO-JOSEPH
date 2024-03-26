@@ -46,6 +46,15 @@ public class Enemy : MonoBehaviour
         agent.speed = mainSpeed;
         
     }
+    void ApplyIceDebuffTime()
+    {
+        currentIceTime = Time.time;
+    }
+
+    void ApplyFireDebuffTime()
+    {
+        currentFireTime = Time.time;
+    }
 
     private void Start()
     {
@@ -78,7 +87,7 @@ public class Enemy : MonoBehaviour
             SpawnerController.instance.RemoveEnemy(this.gameObject);
             Destroy(this.gameObject);
 
-            GameManager.instance.playerHealth -= Random.Range(2, 5);
+            GameManager.instance.playerHealth -= Random.Range(2,5);
 
             if (MonsterType.Equals(3))
             {
@@ -92,44 +101,28 @@ public class Enemy : MonoBehaviour
             
             if (other.gameObject.name.Contains("IceBall"))
             {
-                DebuffEffect(0);
+                StartCoroutine(IcedebuffTimer());
             }
             if(other.gameObject.name.Contains("FireBall"))
             {
-                DebuffEffect(1);
+                StartCoroutine(FireDebuffTimer());
             }
             Destroy(other.gameObject);
             DoEnemyDeath();
         }
     }
 
-    void DebuffEffect(int effect)
+    IEnumerator IcedebuffTimer()
     {
-        switch (effect) 
-        {
-            case 0:
-                Debug.Log("THIS");
-                if(Time.time - currentIceTime >= iceDebuffTime) //done via update
-                {
-                    agent.speed = mainSpeed;
-                    Debug.Log("NormalSpeed");
-                    Debug.Log(Time.time - currentIceTime >= iceDebuffTime);
-                }
-                else
-                {
-                    agent.speed = speedDebuff;
-                    Debug.Log("SlowSpeed");
-                }
-               
-                break;
-            case 1:
+        agent.speed = speedDebuff;
+        yield return new WaitForSeconds(iceDebuffTime);
+        agent.speed = mainSpeed;
+    }
 
-                if (Time.time - currentFireTime >= fireDebuffTime)
-                {
-                    health -= burnDmg;
-                }
-                break;
-        }
+    IEnumerator FireDebuffTimer()
+    {
+        health -= burnDmg;
+        yield return new WaitForSeconds(fireDebuffTime);
     }
 
     public void GoldHealthUpdate()

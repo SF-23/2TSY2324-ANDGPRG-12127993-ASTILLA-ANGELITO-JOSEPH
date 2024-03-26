@@ -26,14 +26,16 @@ public class PlayerMouseInput : MonoBehaviour
             //Debug.DrawLine(ray.origin, hit.point);
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
+
                 if (selectedTower != null)
                 {
                     selectedTower.nodeUI.SetActive(false);
                 }
                 
                 selectedTower = hit.collider.gameObject.GetComponent<Tower>();
-               
-                if(selectedTower != null) 
+                
+
+                if (selectedTower != null && !selectedTower.isBuilding) 
                 {
                   selectedTower.nodeUI.SetActive(true);
                 }
